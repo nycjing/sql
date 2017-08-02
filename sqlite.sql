@@ -67,9 +67,8 @@ ORDER BY last_name;
 
 Leap Noir
 
-SELECT (first_name|| " " ||last_name) AS full_name
-FROM directors JOIN  movies_directors ON directors.id = director_id JOIN movies ON movie_id = movies.id
-     JOIN directors_genres on director_id = directors.id
-     
+SELECT (first_name|| " " ||last_name) AS full_name, name, year
+FROM directors JOIN  movies_directors ON directors.id = movies_directors.director_id JOIN movies ON movies_directors.movie_id = movies.id JOIN movies_genres ON movies.id = movies_genres.movie_id WHERE year % 4 = 0 AND genre = "Film-Noir" ORDER BY name;
+
 
 
