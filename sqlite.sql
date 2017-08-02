@@ -95,3 +95,13 @@ FROM actors JOIN roles ON actors.id = roles.actor_id JOIN movies ON roles.movie_
 WHERE year > 2000)
 ORDER BY sub_id;
 
+
+Busy Filming
+
+SELECT actor_1990.first_name, actor_1990.last_name,actor_1990.name
+FROM
+(SELECT first_name, last_name, name, movies.id as id
+FROM actors JOIN roles ON actors.id = roles.actor_id JOIN movies ON roles.movie_id = movies.id
+WHERE year > 1990 ) actor_1990
+JOIN roles ON roles.movie_id = actor_1990.id GROUP BY actor_1990.name
+ORDER BY COUNT(roles.actor_id);
