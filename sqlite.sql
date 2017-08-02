@@ -17,3 +17,21 @@ CREATE TABLE roles (
   movie_id INTEGER,
   role_name TEXT DEFAULT NULL
 );
+
+
+SELECT name, year FROM movies WHERE year=1902 AND rank>5;
+
+
+Find all movies made in the year you were born.
+SELECT name, year FROM movies WHERE year=1968;
+
+
+How many movies does our dataset have for the year 1982?
+SELECT count(*) FROM movies WHERE year = 1982;
+
+Find actors who have "stack" in their last name.
+SELECT id,first_name,last_name,gender FROM actors WHERE last_name like '%stack%';
+
+What are the 10 most popular first names and last names in the business?
+
+
