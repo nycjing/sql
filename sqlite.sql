@@ -68,7 +68,34 @@ ORDER BY last_name;
 Leap Noir
 
 SELECT (first_name|| " " ||last_name) AS full_name, name, year
-FROM directors JOIN  movies_directors ON directors.id = movies_directors.director_id JOIN movies ON movies_directors.movie_id = movies.id JOIN movies_genres ON movies.id = movies_genres.movie_id WHERE year % 4 = 0 AND genre = "Film-Noir" ORDER BY name;
+FROM directors JOIN  movies_directors ON directors.id = movies_directors.director_id
+JOIN movies ON movies_directors.movie_id = movies.id JOIN movies_genres
+ON movies.id = movies_genres.movie_id WHERE year % 4 = 0 AND genre = "Film-Noir" ORDER BY name;
+
+Bacon
+SELECT sub.*
+FROM
+    (SELECT * FROM actors
+    JOIN roles ON roles.actor_id = actors.id JOIN movies ON roles.movie_id = movies.id
+    JOIN movies_genres ON movies.id = movies_genres.movie_id
+    WHERE first_name = Kevin AND last_name = Bacon AND genre = "Drama") sub
+where
+
+
+
+SELECT sub.*
+  FROM (
+        SELECT *
+          FROM tutorial.sf_crime_incidents_2014_01
+         WHERE day_of_week = 'Friday'
+       ) sub
+ WHERE sub.resolution = 'NONE'
+
+ SELECT dept_id, COUNT(*) AS "total employees"
+ FROM employees
+ GROUP BY dept_id;
+
+
 
 
 
