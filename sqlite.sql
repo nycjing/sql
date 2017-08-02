@@ -49,3 +49,8 @@ SELECT (first_name|| " " ||last_name) AS full_name,COUNT(first_name|| " " ||last
 FROM actors
 GROUP BY full_name
 ORDER BY COUNT(full_name) DESC LIMIT 10;
+
+Prolific
+SELECT (first_name|| " " ||last_name) AS full_name, COUNT(first_name|| " " ||last_name) FROM actors JOIN roles ON actors.id = actor_id GROUP BY full_name ORDER BY COUNT(full_name) DESC LIMIT 100;
+
+Bottom of the Barrel
