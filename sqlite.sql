@@ -83,3 +83,15 @@ JOIN roles ON roles.movie_id = sub.id JOIN actors ON roles.actor_id = actors.id
 WHERE actors.first_name <> "Kevin" AND last_name <> "Bacon"
 ORDER BY sub.name;
 
+Immortal actors
+SELECT *
+FROM
+(SELECT first_name, last_name, actors.id AS sub_id
+FROM actors JOIN roles ON actors.id = roles.actor_id JOIN movies ON roles.movie_id = movies.id
+WHERE year < 1900
+INTERSECT
+SELECT first_name, last_name, actors.id AS sub_id
+FROM actors JOIN roles ON actors.id = roles.actor_id JOIN movies ON roles.movie_id = movies.id
+WHERE year > 2000)
+ORDER BY sub_id;
+
