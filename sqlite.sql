@@ -98,10 +98,10 @@ ORDER BY sub_id;
 
 Busy Filming
 
-SELECT actor_1990.first_name, actor_1990.last_name,actor_1990.name
-FROM
-(SELECT first_name, last_name, name, movies.id as id
-FROM actors JOIN roles ON actors.id = roles.actor_id JOIN movies ON roles.movie_id = movies.id
-WHERE year > 1990 ) actor_1990
-JOIN roles ON roles.movie_id = actor_1990.id GROUP BY actor_1990.name
-ORDER BY COUNT(roles.actor_id);
+SELECT  COUNT(roles.role) as numrole, *
+FROM actors
+JOIN roles ON roles.actor_id = actors.id
+JOIN movies ON roles.movie_id = movies.id
+WHERE year > 1990
+GROUP BY actors.id,movies.id
+HAVING numrole >4;
