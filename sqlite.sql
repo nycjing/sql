@@ -51,6 +51,25 @@ GROUP BY full_name
 ORDER BY COUNT(full_name) DESC LIMIT 10;
 
 Prolific
-SELECT (first_name|| " " ||last_name) AS full_name, COUNT(first_name|| " " ||last_name) FROM actors JOIN roles ON actors.id = actor_id GROUP BY full_name ORDER BY COUNT(full_name) DESC LIMIT 100;
+SELECT (first_name|| " " ||last_name) AS full_name, COUNT(first_name|| " " ||last_name)
+FROM actors JOIN roles ON actors.id = actor_id GROUP BY full_name ORDER BY COUNT(full_name) DESC LIMIT 100;
 
 Bottom of the Barrel
+SELECT genre, COUNT(genre) from movies_genres JOIN movies ON movies.id = movie_id GROUP BY genre
+ORDER BY COUNT(genre) ASC LIMIT 10;
+
+Braveheart
+
+SELECT (first_name|| " " ||last_name) AS full_name
+FROM actors JOIN roles ON actors.id = actor_id JOIN movies ON movie_id = movies.id
+WHERE year = 1995 AND name = "Braveheart"
+ORDER BY last_name;
+
+Leap Noir
+
+SELECT (first_name|| " " ||last_name) AS full_name
+FROM directors JOIN  movies_directors ON directors.id = director_id JOIN movies ON movie_id = movies.id
+     JOIN directors_genres on director_id = directors.id
+     
+
+
