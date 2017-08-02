@@ -73,29 +73,13 @@ JOIN movies ON movies_directors.movie_id = movies.id JOIN movies_genres
 ON movies.id = movies_genres.movie_id WHERE year % 4 = 0 AND genre = "Film-Noir" ORDER BY name;
 
 Bacon
-SELECT sub.*
+SELECT sub.name,actors.first_name, actors.last_name
 FROM
-    (SELECT * FROM actors
+    (SELECT name, movies.id as id  FROM actors
     JOIN roles ON roles.actor_id = actors.id JOIN movies ON roles.movie_id = movies.id
     JOIN movies_genres ON movies.id = movies_genres.movie_id
-    WHERE first_name = Kevin AND last_name = Bacon AND genre = "Drama") sub
-where
-
-
-
-SELECT sub.*
-  FROM (
-        SELECT *
-          FROM tutorial.sf_crime_incidents_2014_01
-         WHERE day_of_week = 'Friday'
-       ) sub
- WHERE sub.resolution = 'NONE'
-
- SELECT dept_id, COUNT(*) AS "total employees"
- FROM employees
- GROUP BY dept_id;
-
-
-
-
+    WHERE first_name = "Kevin" AND last_name ="Bacon"  AND genre = "Drama") sub
+JOIN roles ON roles.movie_id = sub.id JOIN actors ON roles.actor_id = actors.id
+WHERE actors.first_name <> "Kevin" AND last_name <> "Bacon"
+ORDER BY sub.name;
 
